@@ -39,6 +39,17 @@ def post_order(node):
     print(node.item, " ")
 
 
+def binary_search(root, key):
+    if root is None:
+        return False
+    if root.item == key:
+        return True
+    if key < root.item:
+        return binary_search(root.left, key)
+    elif key > root.item:
+        return binary_search(root.right, key)
+
+
 if __name__ == '__main__':
     my_array = [1, 2, 3, 4, 5, 6, 7]
     my_first_tree = bst_from_sorted_array(my_array)
@@ -49,3 +60,4 @@ if __name__ == '__main__':
     print('Here comes the post-order traversal')
     post_order(my_first_tree)
     print("The root is:", my_first_tree.item)
+    print('The element has been found? {}'.format(binary_search(my_first_tree, 5)))
