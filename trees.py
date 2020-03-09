@@ -50,6 +50,25 @@ def binary_search(root, key):
         return binary_search(root.right, key)
 
 
+def height(root):
+    if root is None:
+        return 0
+    else:
+        return 1 + max(height(root.left), height(root.right))
+
+
+def get_level(node, level, data):
+    if node is None:
+        return 0
+    if node.item == data:
+        return level
+    down_level = get_level(node.left, level + 1, data)
+    if down_level:
+        return down_level
+    down_level = get_level(node.right, level + 1, data)
+    return down_level
+
+
 if __name__ == '__main__':
     my_array = [1, 2, 3, 4, 5, 6, 7]
     my_first_tree = bst_from_sorted_array(my_array)
@@ -61,3 +80,5 @@ if __name__ == '__main__':
     post_order(my_first_tree)
     print("The root is:", my_first_tree.item)
     print('The element has been found? {}'.format(binary_search(my_first_tree, 5)))
+    print('The height of our bst is {}.'.format(height(my_first_tree)))
+    print(get_level(my_first_tree, 1, 4))
