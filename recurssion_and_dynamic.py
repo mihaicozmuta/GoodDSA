@@ -21,9 +21,16 @@ def get_ways_better(stairs) -> int:
     prevs[2] = 2
 
     for i in range(3, stairs + 1):
-        prevs[i] = prevs[i-3] + prevs[i-2] + prevs[i-1]
+        prevs[i] = prevs[i - 3] + prevs[i - 2] + prevs[i - 1]
 
     return prevs[stairs]
+
+
+# a robot is in a maze, at the top left corner. she can move only right or down. if the value is None, then we cannot
+# step there. return the robot's way to the right bottom corner
+
+
+
 
 
 if __name__ == '__main__':
